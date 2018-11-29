@@ -3,6 +3,29 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { createStore } from 'redux'
+
+// create a store that represents the state of a checkbox
+const defaultState = { checked: false}
+const reducer = function(state = defaultState, action) {
+  switch (action.type) {
+    case 'TOGGLE':
+      return { ...state, checked: !state.checked }
+    default:
+      return state
+  }
+  // return state
+}
+const store = createStore(reducer)
+console.log(store)
+
+// class App extends React.Component {
+//   render() {
+//     return (
+//       <h1>Hello, World!</h1>
+//     )
+//   }
+// }
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
