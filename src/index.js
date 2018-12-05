@@ -1,55 +1,27 @@
-import React from 'react';
+import App from './App';
+// import App from './components/App'
 import ReactDOM from 'react-dom';
-import './index.css';
-// import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux'
+import React from 'react';
 import { createStore } from 'redux'
+import './index.css';
+import * as serviceWorker from './serviceWorker';
 
-// create a store that represents the state of a checkbox
-const defaultState = { checked: false}
+const defaultState = {
+  appName: 'blog',
+  articles: null
+}
 const reducer = function(state = defaultState, action) {
-  switch (action.type) {
-    case 'TOGGLE':
-      return { ...state, checked: !state.checked }
-    default:
-      return state
-  }
-  // return state
+  return state
 }
+
 const store = createStore(reducer)
-console.log(store)
 
-class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {}
-  }
-
-  componentWillMount() {
-    store.subscribe(() => this.setState(store.getState()))
-  }
-
-  render() {
-    const onClick = () => store.dispatch({ type: 'TOGGLE' })
-    return (
-      <div>
-        <h1>To-dos</h1>
-        <div>
-          Learn Redux &nbsp;
-          <input
-            type="checkbox"
-            checked={!!this.state.checked}
-            onClick={onClick} />
-        </div>
-        {
-          this.state.checked ? (<h2>Done!</h2>) : null
-        }
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render((
+  <Provider store={store}>
+    <App />
+  </Provider>
+  ), document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
