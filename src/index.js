@@ -1,14 +1,13 @@
-import App from './App';
-// import App from './components/App'
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
-import React from 'react';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
-import './index.css';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux'
+import App from './App'
+// import './index.css'
+import * as serviceWorker from './serviceWorker'
 
 const defaultState = {
-  appName: 'blog',
+  appName: 'BLOG',
   articles: null
 }
 const reducer = function(state = defaultState, action) {
