@@ -22,7 +22,8 @@ const MainView = props => {
         </ul>
       </div>
 
-      <ArticleList articles={props.articles} />
+      <ArticleList
+        articles={props.articles} />
     </div>
   )
 }

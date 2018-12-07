@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import './App.css'
-// import './index.js'
 
-import Header from './components/Header'
-import Home from './components/Home/index.js'
+import Header from './Header'
+import Home from './Home'
 
 const mapStateToProps = state => ({
   appName: state.appName
