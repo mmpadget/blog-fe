@@ -6,7 +6,7 @@ class Header extends React.Component {
       <nav className="navbar navbar-light">
         <div className="container">
           <a href="true" className="navbar-brand">
-            {this.props.appName.toLowerCase()}
+            {this.props.appName}
           </a>
         </div>
       </nav>
