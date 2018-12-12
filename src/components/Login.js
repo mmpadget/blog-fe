@@ -1,4 +1,6 @@
 import React from 'react'
+// connect from react-redux not currently necessary.
+import { connect } from 'react-redux'
 
 class Login extends React.Component {
   render() {
@@ -6,7 +8,9 @@ class Login extends React.Component {
       <div className="auth-page">
         <div className="container page">
           <div className="row">
+
             <div className="col-md-6 offset-md-3 col-xs-12">
+
               <h1 className="text-xs-center">Sign In</h1>
               <p className="text-xs-center">
                 <a href="false">
@@ -16,12 +20,14 @@ class Login extends React.Component {
 
               <form>
                 <fieldset>
+
                   <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
                       type="email"
                       placeholder="Email" />
                   </fieldset>
+
                   <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
@@ -34,10 +40,11 @@ class Login extends React.Component {
                     type="submit">
                     Sign in
                   </button>
+
                 </fieldset>
               </form>
-
             </div>
+
           </div>
         </div>
       </div>
@@ -45,4 +52,6 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+// Either of these export statements work
+// export default Login
+export default connect(() => ({}), () => ({}))(Login)

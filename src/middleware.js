@@ -11,7 +11,7 @@ const promiseMiddleware = store => next => action => {
       error => {
         // If the promise is rejected, set actions error property to true.
         action.error = true
-        // Set the action's payload to the error that occured.
+        // Set the action's payload to the error that occured. If the back-end is not available the error will be, "Unhandled Rejection (TypeError): Cannot read property 'body' of undefined."
         action.payload = error.response.body
         // Dispatch the transformed action.
         store.dispatch(action)
