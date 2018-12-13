@@ -1,9 +1,4 @@
 import React from 'react'
-// connect from react-redux not currently necessary.
-import { connect } from 'react-redux'
-
-// import { Link } from 'react-router-dom'
-// <Link to="/login">Sign in</Link>
 
 class Login extends React.Component {
   render() {
@@ -55,6 +50,4 @@ class Login extends React.Component {
   }
 }
 
-// Either of these export statements work
-// export default Login
-export default connect(() => ({}), () => ({}))(Login)
+export default Login

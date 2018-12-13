@@ -3,8 +3,6 @@ import React from 'react'
 const ArticlePreview = props => {
   const article = props.article
 
-  // <a href="false" to={`article/${article.slug}`} className="preview-link">
-  // <a className="preview">
   return (
     <div className="article-preview">
 

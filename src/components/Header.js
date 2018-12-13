@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Link } from 'react-router'
 import { Link } from 'react-router-dom'
 
 class Header extends React.Component {
@@ -7,8 +6,9 @@ class Header extends React.Component {
     return (
       <nav className="navbar navbar-light">
         <div className="container">
+
           <Link to="/" className="navbar-brand">
-            {this.props.appName.toLowerCase()}
+            {this.props.appName}
           </Link>
 
           <ul className="nav navbar-nav pull-xs-right">
@@ -31,7 +31,3 @@ class Header extends React.Component {
 }
 
 export default Header
-
-// Reference:
-// https://www.npmjs.com/package/react-router
-// https://reacttraining.com/react-router/web/guides/quick-start

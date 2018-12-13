@@ -1,8 +1,9 @@
 import React from 'react'
 
-// https://reactjs.org/docs/legacy-context.html#referencing-context-in-stateless-function-components
-// https://reactjs.org/docs/context.html
-const Banner = ({ appName }) => {
+const Banner = ({ appName, token }) => {
+  if (token) {
+    return null
+  }
   return (
     <div className="banner">
       <div className="container">

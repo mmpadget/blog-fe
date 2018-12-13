@@ -19,7 +19,6 @@ const ArticleList = props => {
     )
   }
 
-  //<ArticlePreview article={article} />
   return (
     <div>
       {
