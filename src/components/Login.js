@@ -2,6 +2,9 @@ import React from 'react'
 // connect from react-redux not currently necessary.
 import { connect } from 'react-redux'
 
+// import { Link } from 'react-router-dom'
+// <Link to="/login">Sign in</Link>
+
 class Login extends React.Component {
   render() {
     return (

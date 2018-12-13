@@ -1,16 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 // import { Provider } from 'react-redux'
+// import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+// import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import App from './components/App'
-// import store from './store'
-import * as serviceWorker from './serviceWorker'
-
-// import { Router, Route, IndexRoute, HashRouter } from 'react-router'
-
 // import Home from './components/Home'
 // import Login from './components/Login'
 // import store from './store'
+import * as serviceWorker from './serviceWorker'
 
 // ReactDOM.render((
 //   <Provider store={store}>
