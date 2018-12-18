@@ -1,6 +1,8 @@
 // Check if action.payload is a promise.
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
+    // Dispatch async start action when an async action starts
+    store.dispatch({ type: 'ASYNC_START', subtype: action.type })
     // Wait for promise to resolve.
     action.payload.then(
       res => {
