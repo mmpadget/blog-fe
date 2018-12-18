@@ -1,3 +1,5 @@
+import agent from './agent'
+
 // Check if action.payload is a promise.
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
@@ -31,7 +33,26 @@ function isPromise(v) {
   return v && typeof v.then === 'function'
 }
 
+// If the user closes the window, persist the token using local storage.
+const localStorageMiddleware = store => next => action => {
+  //if (action.type === 'REGISTER' || action.type === 'LOGIN') {
+  // TypeError: Cannot read property 'user' of undefined
+  if (action.type === 'LOGIN') {
+    if (!action.error) {
+      window.localStorage.setItem('jwt', action.payload.user.token)
+      // Tell the agent what the token is.
+      agent.setToken(action.payload.user.token)
+    }
+  } else if (action.type === 'LOGOUT') {
+    window.localStorage.setItem('jwt', '')
+    agent.setToken(null)
+  }
+
+  next(action)
+}
+
 // This middleware is plugged into the redux store.
 export {
+  localStorageMiddleware,
   promiseMiddleware
 }

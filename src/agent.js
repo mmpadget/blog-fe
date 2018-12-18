@@ -8,9 +8,9 @@ const responseBody = res => res.body
 
 const requests = {
   get: url =>
-    superagent.get(`${API_ROOT}${url}`).then(responseBody),
+    superagent.get(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
   post: (url, body) =>
-    superagent.post(`${API_ROOT}${url}`, body).then(responseBody)
+    superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody)
 }
 
 const Articles = {
@@ -19,12 +19,28 @@ const Articles = {
 }
 
 const Auth = {
+  // Return a get-request to the user route. Fetch the currently logged-in user.
+  current: () =>
+    requests.get('/user'),
   login: (email, password) => {
     requests.post('/users/login', { user: { email, password } })
   }
 }
 
+// Create a token variable.
+let token = null
+// Token plugin to always set the token.
+let tokenPlugin = req => {
+  // If token, set the authorization header.
+  if (token) {
+    // Auth header is how the production server knows which user is logged in.
+    req.set('authorization', `Token ${token}`)
+  }
+}
+
 export default {
   Articles,
-  Auth
+  Auth,
+  // Export a set token function that will take in a token and set the local token variable to the provided token.
+  setToken: _token => { token = _token }
 }
