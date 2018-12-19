@@ -6,6 +6,17 @@ const API_ROOT = 'http://localhost:3000/api'
 
 const responseBody = res => res.body
 
+let token = null
+// Token plugin to always set the token.
+//let tokenPlugin = req => {
+const tokenPlugin = req => {
+  // If token, set the authorization header.
+  if (token) {
+    // Auth header is how the production server knows which user is logged in.
+    req.set('authorization', `Token ${token}`)
+  }
+}
+
 const requests = {
   get: url =>
     superagent.get(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
@@ -27,20 +38,9 @@ const Auth = {
   }
 }
 
-// Create a token variable.
-let token = null
-// Token plugin to always set the token.
-let tokenPlugin = req => {
-  // If token, set the authorization header.
-  if (token) {
-    // Auth header is how the production server knows which user is logged in.
-    req.set('authorization', `Token ${token}`)
-  }
-}
-
+// Export a set token function that will take in a token and set the local token variable to the provided token.
 export default {
   Articles,
   Auth,
-  // Export a set token function that will take in a token and set the local token variable to the provided token.
   setToken: _token => { token = _token }
 }

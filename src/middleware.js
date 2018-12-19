@@ -35,9 +35,7 @@ function isPromise(v) {
 
 // If the user closes the window, persist the token using local storage.
 const localStorageMiddleware = store => next => action => {
-  //if (action.type === 'REGISTER' || action.type === 'LOGIN') {
-  // TypeError: Cannot read property 'user' of undefined
-  if (action.type === 'LOGIN') {
+  if (action.type === 'REGISTER' || action.type === 'LOGIN') {
     if (!action.error) {
       window.localStorage.setItem('jwt', action.payload.user.token)
       // Tell the agent what the token is.
