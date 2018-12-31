@@ -7,6 +7,7 @@ import agent from '../agent'
 import Home from './Home'
 import Header from './Header'
 import Login from './Login'
+import Register from './Register'
 
 const mapStateToProps = state => ({
   appName: state.common.appName,
@@ -57,6 +58,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
         </Switch>
 
       </div>

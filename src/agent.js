@@ -33,9 +33,10 @@ const Auth = {
   // Return a get-request to the user route. Fetch the currently logged-in user.
   current: () =>
     requests.get('/user'),
-  login: (email, password) => {
-    requests.post('/users/login', { user: { email, password } })
-  }
+  login: (email, password) =>
+    requests.post('/users/login', { user: { email, password } }),
+  register: (username, email, password) =>
+    requests.post('/users', { user: { username, email, password } })
 }
 
 // Export a set token function that will take in a token and set the local token variable to the provided token.
