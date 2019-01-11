@@ -1,11 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { withRouter, Route, Switch } from 'react-router-dom'
-import { Route, Switch } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import agent from '../agent'
-import Home from './Home'
 import Header from './Header'
+import Home from './Home'
 import Login from './Login'
 import Register from './Register'
 import Settings from './Settings'
@@ -55,18 +54,15 @@ class App extends React.Component {
           currentUser={this.props.currentUser}
           appName={this.props.appName} />
         {this.props.children}
-
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/settings" component={Settings} />
         </Switch>
-
       </div>
     )
   }
 }
-// export default connect(mapStateToProps, () => ({}) )(App)
+
 export default connect(mapStateToProps, mapDispatchToProps)(App)
-// export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
