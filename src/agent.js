@@ -2,7 +2,7 @@ import superagent from 'superagent'
 
 // const API_ROOT = 'https://conduit.productionready.io/api'
 // Start the back-end server first. The front-end uses port 3001 for local development.
-const API_ROOT = 'http://localhost:3000/api'
+const API_ROOT = 'http://localhost:4000/api'
 
 const responseBody = res => res.body
 
